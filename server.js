@@ -45,6 +45,29 @@ app.get('/', (req, res) => {
 
 
 
+// Configura CORS para permitir solicitudes desde tu frontend
+const corsOptions = {
+  origin: 'https://front-lpc.onrender.com', // La URL de tu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+
+
+const token = localStorage.getItem('token'); 
+const response = await fetch('https://back-lpc.onrender.com/reservas', {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json',
+  },
+});
+
+
+
+
+
 // Esquema de usuarios
 const userSchema = new mongoose.Schema({
   nombre: String,
