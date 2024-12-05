@@ -1,8 +1,8 @@
-import express from 'express';
-const mongoose = 'mongoose';
-const cors = 'cors';
-const bcrypt ='bcryptjs';
-const jwt = 'jsonwebtoken';
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const {
   sendResetEmail,
   sendContactEmail,
@@ -55,14 +55,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-const token = localStorage.getItem('token'); 
-const response = await fetch('https://back-lpc.onrender.com/reservas', {
-  method: 'GET',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  },
-});
+
+
+
 
 
 
