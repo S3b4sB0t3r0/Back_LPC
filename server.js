@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+const http = require('http'); // Agrega esta línea
 const jwt = require('jsonwebtoken');
 const {
   sendResetEmail,
@@ -56,10 +57,18 @@ app.use(cors(corsOptions));
 
 
 
-const server = http.createServer(app);  // Usamos solo http sin SSL
+const server = http.createServer(app);  // Aquí usas el módulo http
 
-// Configurar WebSocket sobre HTTP
+// Aquí puedes configurar tu WebSocket si lo estás utilizando
+const WebSocket = require('ws');
 const wss = new WebSocket.Server({ server });
+
+wss.on('connection', (ws) => {
+  console.log('Nuevo cliente conectado');
+  ws.on('message', (message) => {
+    console.log('Mensaje recibido:', message);
+  });
+});
 
 
 
