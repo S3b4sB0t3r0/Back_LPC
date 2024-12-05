@@ -355,7 +355,7 @@ app.post('/restablecer', async (req, res) => {
   }
 
   const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: '1h' });
-  const resetLink = `https://back-lpc.onrender.com/restablecer/${token}`;
+  const resetLink = `https://front-lpc.onrender.com/restablecer/${token}`;
 
   try {
     // Pasa el nombre del usuario al enviar el correo
