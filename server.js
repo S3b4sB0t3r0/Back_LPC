@@ -56,27 +56,11 @@ app.use(cors(corsOptions));
 
 
 
-const WebSocket = require('ws');
-const https = require('https');
-const fs = require('fs');
+const server = http.createServer(app);  // Usamos solo http sin SSL
 
-
-// Crea un servidor HTTPS (si no tienes uno, lo necesitarás para wss://)
-const server = https.createServer({
-  cert: fs.readFileSync('path/to/cert.pem'),
-  key: fs.readFileSync('path/to/key.pem')
-});
-
-// Configura WebSocket para aceptar conexiones
+// Configurar WebSocket sobre HTTP
 const wss = new WebSocket.Server({ server });
 
-wss.on('connection', (ws) => {
-  console.log('Cliente conectado');
-  ws.on('message', (message) => {
-    console.log('Mensaje recibido: ', message);
-  });
-  ws.send('¡Hola desde el servidor!');
-});
 
 
 
