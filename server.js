@@ -1,8 +1,8 @@
 import express from 'express';
-const mongoose = require('mongoose');
-const cors = require('cors');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const mongoose = 'mongoose';
+const cors = 'cors';
+const bcrypt ='bcryptjs';
+const jwt = 'jsonwebtoken';
 const {
   sendResetEmail,
   sendContactEmail,
